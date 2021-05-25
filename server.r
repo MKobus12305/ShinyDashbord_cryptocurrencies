@@ -170,8 +170,15 @@ server <- function(input, output) {
     
     df$Date <- ymd(df$Date)
 
-    plot_ly(x = df$Date, y = df$Close, name = 'Close cryptocurrency prize at a given day', 
-            type = 'scatter', mode = 'lines', color = "Set1")
+    plott = plot_ly(x = df$Date, y = df$Close, name = 'Close prize at a given day $', 
+                    type = 'scatter', mode = 'lines', color = '#FF97FF')
+
+    plott = plott %>% add_trace(x = df$Date, y = df$Open, name = 'Open prize at a given day $',
+                                type = 'scatter', mode = 'lines', color = "darkblue")
+    
+    plott = plott %>% layout(legend = list(orientation = 'h',
+                                           yanchor="lower"))
+    plott
     
   })
   
@@ -182,9 +189,10 @@ server <- function(input, output) {
     aux2 <- max(aux)
     
     df$Date <- ymd(df$Date)
-
-    plot_ly(x = df$Date, y=df$Volume, name = 'Volume of the cryptocurrency at a given day', 
-            type = 'bar', color = "Set1")
+    plott = plot_ly(x = df$Date, y=df$Volume, name = 'Volume of the cryptocurrency at a given day', 
+                    type = 'bar')
+    
+    plott
     
   })
   
@@ -201,7 +209,7 @@ server <- function(input, output) {
     
     dataframe1$Date <- ymd(dataframe1$Date)
     dataframe2$Date <- ymd(dataframe2$Date)
-
+    
     plott = plot_ly(x = dataframe1$Date, y = dataframe1$Close, name = dataframe1$cryptocurrency[1], 
                     type = 'scatter', mode = 'lines', color = "deepskyblue")
     plott = plott %>% add_trace(x = dataframe2$Date, y = dataframe2$Close, name = dataframe2$cryptocurrency[1],
@@ -211,7 +219,6 @@ server <- function(input, output) {
                                            yanchor="upper"))
     
     plott
-    # add_trace(y = ~trace_1, name = 'trace 1', mode = 'lines+markers')
   })
   
   
@@ -237,14 +244,6 @@ server <- function(input, output) {
                            color = df$Change,
                            colors = c('darkgreen','red')) %>%
       layout(yaxis = list(title = "Volume"))
-    
-    
-    marketcap_plot <- plot_ly(x = df$Date, y = df$Marketcap, showlegend = T,
-                              type ='bar', name="Marketcap", 
-                              color = df$Change,
-                              colors = c('darkgreen','red')) %>%
-      layout(yaxis = list(title = "Market cap"))
-    
     
     range_selector <- list(x = 0.75, y = 0.95, bgcolor = "fontcolor",
                            buttons = list(
@@ -273,9 +272,15 @@ server <- function(input, output) {
                                    step = "all")))
     
     
-    plott <- subplot(candle_plot, volume_plot, marketcap_plot,
-                          heights = c(0.6,0.2,0.2), nrows=3, shareX = TRUE, titleY = TRUE) %>%
+    plott <- subplot(candle_plot, volume_plot,
+                     heights = c(0.7,0.3), nrows=2, shareX = TRUE, titleY = TRUE) %>%
       layout(title =df$cryptocurrency[1],
+             legend= list (
+               yanchor="top",
+               y=0.99,
+               xanchor="left",
+               x=0.01
+             ),
              xaxis = list(rangeselector = range_selector))
     
     plott
@@ -436,7 +441,7 @@ server <- function(input, output) {
     
     dataframe1$Date <- ymd(dataframe1$Date)
     dataframe2$Date <- ymd(dataframe2$Date)
-
+    
     plott = plot_ly(x = dataframe1$Date, y = dataframe1$Volume, name = dataframe1$cryptocurrency[1], 
                     type = 'scatter', mode = 'lines',fill = 'tozeroy',  color = "deepskyblue")
     

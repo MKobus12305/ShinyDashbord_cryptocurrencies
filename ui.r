@@ -66,13 +66,13 @@ body <- dashboardBody(
             ),
             
             fluidRow(
-              box(title = "Closing Price graph", width = 12, solidHeader = TRUE,
+              box(title = "Open and Close price graph ($)", width = 12, solidHeader = TRUE,
                   plotlyOutput('price_basic_graph')
               )
             ),
             
             fluidRow(
-              box(title = "Histogram (Volume)", width = 12, solidHeader = TRUE,
+              box(title = "Volume ($)", width = 12, solidHeader = TRUE,
                   plotlyOutput('volume_basic_hist')
               )
             ),
@@ -113,12 +113,12 @@ body <- dashboardBody(
             ),
             
             fluidRow(
-              box(title = "Closing Price graph", width = 12, solidHeader = TRUE,
+              box(title = "Close price graph ($)", width = 12, solidHeader = TRUE,
                   plotlyOutput('price_comp_graph')
               )
             ),
             fluidRow(
-              box(title = "Histogram (Volume)", width = 12, solidHeader = TRUE,
+              box(title = "Volume ($)", width = 12, solidHeader = TRUE,
                   plotlyOutput('volume_comp_hist')
               )
             ),
