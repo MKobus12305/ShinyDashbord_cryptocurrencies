@@ -1,5 +1,6 @@
 # ShinyDashbord_cryptocurrencies
 ## Interactive Shiny dashboard showing cryptocurrencies analysis  
+### Autors: Magda Kobusińska and Karol Roszak
 This application was created for the Data Visualization course as an assignment in creating interactive dashboards, using R and the Shiny and ShinyDashboards libraries. 
 It is intended to allow the user to perform basic analysis, as well as to compare two cryptocurrencies, their marketcap and value, and their minimum and maximum values.
 
