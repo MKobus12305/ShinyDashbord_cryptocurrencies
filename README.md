@@ -1,4 +1,6 @@
 # ShinyDashbord_cryptocurrencies
+Live demo: https://lorakszak.shinyapps.io/ShinyDashbord_cryptocurrencies/  
+
 ## Interactive Shiny dashboard showing cryptocurrencies analysis  
 ### Autors: Magda Kobusińska and Karol Roszak
 This application was created for the Data Visualization course as an assignment in creating interactive dashboards, using R and the Shiny and ShinyDashboards libraries. 
